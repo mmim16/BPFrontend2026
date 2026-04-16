@@ -77,14 +77,14 @@ export default function Game() {
 
             {hints.slice(0, visibleCount).map((h, i) => (
               <div key={i} style={styles.reviewBox}>
-                <p>"{h.comment?.text}"</p>     //hint review
+                <p>{h.text?.text}</p>     
               </div>
             ))}
 
-            {/* image hint on third try */}
+            {/* image hint on third try
             {visibleCount >=3 && imgHint && (
               <img src={imgHint} alt="An image hint" style={{width: '200px', borderRadius: '8px' }} />
-           )}
+           )} */}
 
            {visibleCount <hints.length && !showResult && (
               <button onClick={() =>setVisibleCount(visibleCount +1)}>

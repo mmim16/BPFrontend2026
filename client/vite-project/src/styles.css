@@ -7,7 +7,23 @@
   font-family: Delius, "Comic Sans MS", cursive, sans-serif;
 }
 
+.page::before {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  background-image: url("/pattern.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
 .card {
+  position: relative;
   width: 420px;
   padding: 25px;
   border-radius: 25px;

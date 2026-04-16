@@ -5,6 +5,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
+
 app.get("/api/game", (req, res) => {
     //first find a business
 
@@ -15,7 +16,10 @@ app.get("/api/game", (req, res) => {
         api_key: "1caaf9f9790e745ee0ae0e72a6fd68b1db3b40c5147d1af18c64682548ab0b40"
     }, (searchJson) => {
 
-        const business = searchJson["organic_results"][0];
+        
+        const pickRand = Math.floor(Math.random() * searchJson["organic_results"].length)
+
+        const business = searchJson["organic_results"][pickRand];
         const businessID = business.place_ids[0];
         const trueRating = business.rating;
 

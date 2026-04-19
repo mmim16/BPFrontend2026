@@ -13,7 +13,7 @@ app.get("/api/game", (req, res) => {
         engine: "yelp",
         find_desc: "food",
         find_loc: "New Jersey, United States",
-        api_key: "1caaf9f9790e745ee0ae0e72a6fd68b1db3b40c5147d1af18c64682548ab0b40"
+        api_key: "[API KEY]"
     }, (searchJson) => {
 
         
@@ -28,7 +28,7 @@ app.get("/api/game", (req, res) => {
         getJson({
             engine: "yelp_reviews",
             place_id: businessID,
-            api_key: "1caaf9f9790e745ee0ae0e72a6fd68b1db3b40c5147d1af18c64682548ab0b40"
+            api_key: "[API KEY]"
         }, (reviewJson) => {
             const gameData = {
                 name: business.title,

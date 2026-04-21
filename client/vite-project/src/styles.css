@@ -1,131 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ─── Page ───────────────────────────────────────────── */
 .page {
   height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom right, #a9a9fd, #c7e5f6);
-  font-family: Delius, "Comic Sans MS", cursive, sans-serif;
+  background: linear-gradient(135deg, #a9a9fd 0%, #c7e5f6 100%);
+  font-family: 'Libre Franklin', sans-serif;
+  overflow: hidden;
 }
 
 .page::before {
   content: "";
   position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
+  inset: 0;
   background-image: url("/pattern.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  opacity: 0.25;
+  opacity: 0.15;
   pointer-events: none;
 }
 
+/* ─── Home Card — original compact size ─────────────── */
+.home-card {
+  position: relative;
+  width: 460px;
+  min-width: 340px;
+  padding: 40px 36px;
+  border-radius: 24px;
+  background-color: #fafaff;
+  box-shadow: 0 20px 60px rgba(120, 100, 220, 0.25);
+  border: 1.5px solid #dddaf8;
+  text-align: center;
+}
+
+.yelp-logo {
+  width: 110px;
+  margin-bottom: 12px;
+}
+
+.home-title {
+  font-size: 38px;
+  font-weight: 900;
+  color: #2d2b55;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.home-subtitle {
+  font-size: 15px;
+  color: #6b6b8d;
+  line-height: 1.5;
+}
+
+.home-divider {
+  height: 1.5px;
+  background-color: #e8e6fc;
+  margin: 24px 0;
+}
+
+.home-modes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mode-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  border: 1.5px solid #dddaf8;
+  background-color: #f5f4ff;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  width: 100%;
+}
+
+.mode-card:hover {
+  background-color: #eceaff;
+  border-color: #908eff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(144, 142, 255, 0.2);
+}
+
+.mode-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.daily-icon    { background: linear-gradient(135deg, #908eff, #7b78f0); }
+.infinite-icon { background: linear-gradient(135deg, #8db2fd, #6a96f5); }
+
+.mode-info { flex: 1; }
+
+.mode-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2d2b55;
+  margin-bottom: 3px;
+}
+
+.mode-desc {
+  font-size: 13px;
+  color: #6b6b8d;
+  line-height: 1.4;
+}
+
+.mode-arrow { flex-shrink: 0; }
+
+.home-footer {
+  font-size: 12px;
+  color: #b0aed0;
+  margin-top: 4px;
+}
+
+/* ─── Game Card — wide, with grow-in animation ───────── */
 .card {
   position: relative;
-  width: 420px;
-  padding: 25px;
-  border-radius: 25px;
-  background-color: #d9d9ff;
-  box-shadow: 0 10px 30px rgba(160, 117, 252, 0.45);
+  width: 60vw;
+  max-width: 960px;
+  min-width: 340px;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 36px 52px 32px;
+  border-radius: 24px;
+  background-color: #fafaff;
+  box-shadow: 0 20px 60px rgba(120, 100, 220, 0.25);
   text-align: center;
-  border: 3px solid #b7b7f5;
+  border: 1.5px solid #dddaf8;
+  animation: growIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes growIn {
+  from {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.card-yelp-logo {
+  width: 80px;
+  margin-bottom: 6px;
+}
+
+.game-mode-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #908eff;
+  margin-bottom: 4px;
 }
 
 .title {
-  font-size: 45px;
-  margin-bottom: 10px;
+  font-size: 34px;
+  font-weight: 900;
+  color: #2d2b55;
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+/* ─── Progress Bar ───────────────────────────────────── */
+.progress-bar-track {
+  width: 100%;
+  height: 5px;
+  background-color: #e8e6fc;
+  border-radius: 99px;
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, #908eff, #8db2fd);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+/* ─── Home Button ────────────────────────────────────── */
+.homeButton {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 13px;
+  border: 1.5px solid #dddaf8;
+  border-radius: 10px;
+  background-color: #f5f4ff;
   color: #908eff;
-  font-weight: bold;
-}
-
-.stars {
-  margin-bottom: 15px;
-}
-
-.button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 15px;
-  background-color: #8db2fd;
-  color: white;
   cursor: pointer;
-  display: block;
-  margin: 20px auto 0;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(78, 129, 232, 0.3);
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 12px;
   transition: 0.2s;
 }
 
-.button:hover {
-  transform: translateY(-2px);
+.homeButton:hover {
+  background-color: #eceaff;
+  border-color: #908eff;
 }
 
-.button.disabled {
-  opacity: 0.5;
+/* ─── Buttons ────────────────────────────────────────── */
+.button {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 12px;
+  background-color: #908eff;
+  color: white;
+  cursor: pointer;
+  display: block;
+  margin: 16px auto 0;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 14px;
+  box-shadow: 0 4px 14px rgba(144, 142, 255, 0.35);
+  transition: all 0.2s ease;
+}
+
+.button:hover:not(:disabled) {
+  background-color: #7b78f0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(144, 142, 255, 0.45);
+}
+
+.button:disabled {
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
-.reviewBox {
-  padding: 18px;
-  border-radius: 15px;
-  background-color: #efeffd;
-  border: 2px solid #c6c6fc;
-  margin-bottom: 20px;
-  min-height: 80px;
-  color: #444;
+.button.secondary {
+  background-color: transparent;
+  color: #908eff;
+  border: 1.5px solid #908eff;
+  box-shadow: none;
+  font-size: 13px;
+  padding: 8px 20px;
 }
 
+.button.secondary:hover {
+  background-color: #f5f4ff;
+  transform: translateY(-2px);
+}
+
+/* ─── Business Name ──────────────────────────────────── */
+.business-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #2d2b55;
+  margin: 10px 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Hint Boxes ─────────────────────────────────────── */
+.hintBox {
+  padding: 16px 20px;
+  border-radius: 14px;
+  background-color: #f5f4ff;
+  border: 1.5px solid #e2e0fc;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.hintBox.image-hint {
+  text-align: center;
+}
+
+.hint-number {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #908eff;
+  margin-bottom: 6px;
+}
+
+.hintLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #908eff;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hintText {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #3a3860;
+}
+
+.hintImage {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 6px;
+}
+
+/* ─── Star Buttons ───────────────────────────────────── */
 .row {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 12px;
+  margin: 20px 0 8px;
 }
 
 .starButton {
   flex: 1;
-  padding: 10px;
-  border-radius: 15px;
-  border: 2px solid #c6c6fc;
+  padding: 12px 6px;
+  border-radius: 12px;
+  border: 1.5px solid #e2e0fc;
   cursor: pointer;
-  font-weight: bold;
-  background-color: #efeffd;
-  transition: 0.2s;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 14px;
+  background-color: #f5f4ff;
+  color: #2d2b55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
 }
 
-.starButton:hover {
-  transform: scale(1.05);
+.starButton:hover:not(:disabled) {
+  border-color: #908eff;
+  background-color: #eceaff;
+  transform: translateY(-2px);
 }
 
 .starButton.selected {
-  background-color: #d6f0ff;
-  transform: scale(1.1);
+  background-color: #908eff;
+  color: white;
+  border-color: #908eff;
+  box-shadow: 0 4px 12px rgba(144, 142, 255, 0.35);
+  transform: translateY(-2px);
 }
 
-.starIcon {
-  opacity: 0.75;
-}
+.starButton:disabled { cursor: not-allowed; }
 
 .center {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
 }
 
+/* ─── Result ─────────────────────────────────────────── */
 .result {
-  margin-top: 20px;
-  padding: 10px;
-  border-radius: 15px;
-  background-color: #efeffd;
-  border: 2px solid #c6c6fc;
-  color: #444;
+  margin-top: 18px;
+  padding: 18px 22px;
+  border-radius: 14px;
+  background-color: #f5f4ff;
+  border: 1.5px solid #e2e0fc;
+}
+
+.result-correct { border-color: #b2f2c2; background-color: #f0fff4; }
+.result-wrong   { border-color: #ffc9c9; background-color: #fff5f5; }
+
+.result-message {
+  font-size: 17px;
+  font-weight: 700;
+  color: #2d2b55;
+  margin-bottom: 12px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  padding: 7px 0;
+  border-top: 1px solid #e2e0fc;
+  color: #3a3860;
+}
+
+.star-display {
+  display: inline-flex;
+  gap: 2px;
+  vertical-align: middle;
 }
 
 .score {
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: bold;
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 700;
   color: #908eff;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Daily Summary ──────────────────────────────────── */
+.summary-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: #2d2b55;
+  margin-bottom: 4px;
+}
+
+.summary-score {
+  font-size: 48px;
+  font-weight: 900;
+  color: #908eff;
+  margin-bottom: 20px;
+}
+
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.summary-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  text-align: left;
+  border: 1.5px solid #e2e0fc;
+}
+
+.summary-row.correct   { background-color: #f0fff4; border-color: #b2f2c2; }
+.summary-row.incorrect { background-color: #fff5f5; border-color: #ffc9c9; }
+
+.summary-biz {
+  font-weight: 700;
+  font-size: 14px;
+  color: #2d2b55;
+}
+
+.summary-detail {
+  font-size: 12px;
+  color: #6b6b8d;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }

@@ -2,12 +2,7 @@ const { getJson } = require("serpapi");
 const express = require("express");
 const cors = require('cors');
 const app = express();
-app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    process.env.FRONTEND_URL
-  ]
-}));
+app.use(cors());
 
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
